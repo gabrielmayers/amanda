@@ -2,15 +2,10 @@ import tweepy
 
 # Authenticate to Twitter
 
-auth = tweepy.OAuthHandler("6vb95s6RCO5VS3WbI9VtD8KA0", "BsbMbrjnThkQhd2W14tZuTTFqUyO5F10bTJOS9AFb8aFu4F5A2")
+auth = tweepy.OAuthHandler("09nFtECOjaCCvL3JQjJcxvVLt", "MplwsC879nCoFffxwXP1oWRRfD4l990ZK0o2tuE4mty9rXxS5N")
 
-auth.set_access_token("1262531460894011395-Xd9xt4PacAbowV7JOp1qrzhC6EKJbM", "5nb9Z1qMuS4qrlYzm1QwE8xOflhs9sOAQtK4O42QKTqSe")
+auth.set_access_token("1277383591014563840-tYygJDOMyAC5b2guuMCafhvg6Scq4B", "o3RyHAj26esFqbvDypsbS0Qu24dTmcbODYaQpRKdO7HxW")
 
-api = tweepy.API(auth)
+api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
-try:
-    api.verify_credentials()
-    print("Authentication Ok!")
-
-except:
-    print("Error During Authentication")
+api.update_status("Testing tweet from Tweepy")
