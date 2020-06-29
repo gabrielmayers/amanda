@@ -8,4 +8,5 @@ auth.set_access_token("1277383591014563840-ZJNhopLOEajbdwq0k8wc6fmqSyST1Y", "cGs
 
 api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
-api.update_status("Testing Tweet!")
+for i in api.search(q='#machinelearning', count=2):
+    api.retweet(i.id)
