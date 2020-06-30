@@ -1,3 +1,5 @@
+import time
+
 import tweepy
 
 
@@ -18,11 +20,11 @@ auth = auth_twitter('09nFtECOjaCCvL3JQjJcxvVLt', 'MplwsC879nCoFffxwXP1oWRRfD4l99
 api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
 
-# Make Retweets:
+def make_rt(keywords, sleep):
+    for i in api.search(q=[keywords]):
+        api.retweet(i.id)
 
-def make_ret(api_ref, keyword, n):
-    for i in api_ref.search(q=keyword, count=n):
-        api_ref.retweet(i.id)
+        time.sleep(sleep)
 
 
-make_ret(api, '#deeplearning', 1)
+make_rt(['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'], 60)
