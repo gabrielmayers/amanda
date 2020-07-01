@@ -32,4 +32,4 @@ def make_rt(keywords, sleep):
     time.sleep(sleep)
 
 
-make_rt(['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'], 60)
+make_rt(['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'], 300)
