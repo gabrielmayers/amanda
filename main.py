@@ -1,3 +1,4 @@
+import random
 import time
 
 import tweepy
@@ -13,9 +14,9 @@ def auth_twitter(api_key, api_secret_key, access_tok, access_tok_secret):
     return authentication
 
 
-auth = auth_twitter('XXXXXXXXXXXXXXXXXXXXXXXXXXX', 'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
-                    'XXXXXXXXXXXXXXXXXXXXXXXXXXX',
-                    'XXXXXXXXXXXXXXXXXXXXXXXXXXX')
+auth = auth_twitter('09nFtECOjaCCvL3JQjJcxvVLt', 'MplwsC879nCoFffxwXP1oWRRfD4l990ZK0o2tuE4mty9rXxS5N',
+                    '1277383591014563840-3BqGxEHNfl9aGezEVWyrzqdEToy57h',
+                    'ReumvNu4JkHsfzJWXOiAEe0JoZDDHRGZBrubbGvFuzWmk')
 
 api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
@@ -32,4 +33,4 @@ def make_rt(keywords, sleep):
     time.sleep(sleep)
 
 
-make_rt(['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'], 300)
+make_rt(['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'], random.randint(300, 1200))
