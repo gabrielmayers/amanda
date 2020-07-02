@@ -40,7 +40,7 @@ python main.py</pre></div>
  <p>Amanda search for new tweets about <b> Machine Learning</b>, <b> Deep Learning</b> and <b> Artificial Intelligence</b>.</p>
 </li>
 <li>
-<p>When she find new tweets, she retweet! </p>
+<p>When she find new tweet about these topics, she retweet! </p>
 </li>
 </ol>
 
