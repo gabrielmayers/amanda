@@ -33,4 +33,5 @@ def make_rt(keywords, sleep):
     time.sleep(sleep)
 
 
-make_rt(['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'], random.randint(300, 1200))
+make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
+        sleep=random.randint(300, 1200))
