@@ -22,7 +22,9 @@ api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
 
 def make_rt(keywords, sleep):
-    for i in api.search(q=[keywords]):
+    search_results = api.search(q=[keywords], count=100)
+
+    for i in search_results:
 
         try:
             api.retweet(id=i.id, count=1)
@@ -33,4 +35,4 @@ def make_rt(keywords, sleep):
 
 
 make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
-        sleep=random.randint(60, 300))
+        sleep=random.randint(60, 120))
