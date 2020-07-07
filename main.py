@@ -23,12 +23,17 @@ api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
 def make_rt(keywords, sleep):
     search_results = api.search(q=[keywords], count=100)
+
+    # Start API call counting incrementing 1:
+
     call = call_api(1)
 
     for i in search_results:
 
         try:
             api.retweet(id=i.id, count=1)
+
+            # Increment 1 to the API call number:
 
             call = call + 1
 
@@ -56,4 +61,4 @@ def verify_call(call):
 
 
 make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
-        sleep=random.randint(60, 120))
+        sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes
