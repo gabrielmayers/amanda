@@ -1,4 +1,3 @@
-import random
 import time
 
 import tweepy
@@ -60,5 +59,16 @@ def verify_call(call):
         pass
 
 
-make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
-        sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes
+# Reply tweets:
+
+def reply():
+    favorites = api.favorites()
+
+    for results in favorites:
+        api.update_status('S2!', in_reply_to_status=results.id)  # Reply here
+
+
+reply()
+
+# make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
+# sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
