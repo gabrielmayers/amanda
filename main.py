@@ -13,9 +13,9 @@ def auth_twitter(api_key, api_secret_key, access_tok, access_tok_secret):
     return authentication
 
 
-auth = auth_twitter('09nFtECOjaCCvL3JQjJcxvVLt', 'MplwsC879nCoFffxwXP1oWRRfD4l990ZK0o2tuE4mty9rXxS5N',
-                    '1277383591014563840-Q5bZURznGNks7KfbqPcGrZtISAnT5c',
-                    'Dxba7K9Cft9NM1LifoOJit87gflaBsfWT7KE5p7nu7nIY')
+auth = auth_twitter('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+                    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+                    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
 
 api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
