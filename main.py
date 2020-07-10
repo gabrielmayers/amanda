@@ -15,8 +15,8 @@ def auth_twitter(api_key, api_secret_key, access_tok, access_tok_secret):
 
 
 auth = auth_twitter('09nFtECOjaCCvL3JQjJcxvVLt', 'MplwsC879nCoFffxwXP1oWRRfD4l990ZK0o2tuE4mty9rXxS5N',
-                    '1277383591014563840-ZoQ85Rlxh3MVsIrq8ljeDsNPtAy7jN',
-                    'ct4YFqVn4bIaPvjSrv78GrtkP6BAivV0Nbz5kUcEIwQ1S')
+                    '1277383591014563840-BFfIpgpJtUIHtNJiLRH374BSm8bXqt',
+                    'tnrnRmXn0NaCWyrGWrlEQ5lbT7XDRGyHzjzq02jiDQsom')
 
 api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
@@ -62,8 +62,12 @@ def verify_call(call):
 
 # Thank for mention:
 
-def thank_u(id_user):
-    api.send_direct_message(id_user, 'Thank u for mention me! S2')
+def thank_u(user, call_score):
+    api.send_direct_message(user, text='Hey, Thank you for mention me! \N{grinning face}')
+
+    call_score = call_score + 1
+
+    return call_score
 
 
 # Reply tweets:
@@ -80,6 +84,8 @@ def reply(sleep):
         try:
             api.update_status(status='\N{yellow heart}', in_reply_to_status_id=results.id,
                               auto_populate_reply_metadata=True)  # implement don't repeat comments
+
+            thank_u(results.user.id, call_score=call)  # Send Message to say Thank U
 
             # Increment 1 to the API call number:
 
