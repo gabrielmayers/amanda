@@ -13,9 +13,9 @@ def auth_twitter(api_key, api_secret_key, access_tok, access_tok_secret):
     return authentication
 
 
-auth = auth_twitter('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-                    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-                    'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+auth = auth_twitter('09nFtECOjaCCvL3JQjJcxvVLt', 'MplwsC879nCoFffxwXP1oWRRfD4l990ZK0o2tuE4mty9rXxS5N',
+                    '1277383591014563840-ZoQ85Rlxh3MVsIrq8ljeDsNPtAy7jN',
+                    'ct4YFqVn4bIaPvjSrv78GrtkP6BAivV0Nbz5kUcEIwQ1S')
 
 api = tweepy.API(auth, wait_on_rate_limit_notify=True, wait_on_rate_limit=True)
 
@@ -27,10 +27,10 @@ def make_rt(keywords, sleep):
 
     call = call_api(1)
 
-    for i in search_results:
+    for results in search_results:
 
         try:
-            api.retweet(id=i.id, count=1)
+            api.retweet(id=results.id, count=1)
 
             # Increment 1 to the API call number:
 
@@ -59,16 +59,37 @@ def verify_call(call):
         pass
 
 
+# Thank for mention:
+
+def thank_u(id_user):
+    api.send_direct_message(id_user, 'Thank u for mention me! S2')
+
+
 # Reply tweets:
 
-def reply():
-    favorites = api.favorites()
+def reply(sleep):
+    mentions = api.mentions_timeline()
 
-    for results in favorites:
-        api.update_status('S2!', in_reply_to_status=results.id)  # Reply here
+    # Start API call counting incrementing 1:
+
+    call = call_api(1)
+
+    for results in mentions:
+
+        try:
+            api.update_status(status='\N{yellow heart}', in_reply_to_status_id=results.id,
+                              auto_populate_reply_metadata=True)  # implement don't repeat comments
+
+            # Increment 1 to the API call number:
+
+            call = call + 1
+
+            time.sleep(sleep)
+        except:
+            pass
 
 
-reply()
+reply(sleep=1)
 
 # make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
-# sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
+#       sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
