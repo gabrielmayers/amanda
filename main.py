@@ -1,3 +1,4 @@
+import random
 import time
 
 import tweepy
@@ -91,5 +92,5 @@ def reply(sleep):
 
 reply(sleep=1)
 
-# make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
-#       sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
+make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
+        sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
