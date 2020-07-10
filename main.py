@@ -82,14 +82,14 @@ def reply(sleep):
     for results in mentions:
 
         try:
-            api.update_status(status='\N{yellow heart}', in_reply_to_status_id=results.id,
-                              auto_populate_reply_metadata=True)  # implement don't repeat comments
+            call_update_count = api.update_status(status='\N{yellow heart}', in_reply_to_status_id=results.id,
+                                                  auto_populate_reply_metadata=True)  # implement don't repeat comments
 
-            thank_u(results.user.id, call_score=call)  # Send Message to say Thank U
+            call_send_count = thank_u(results.user.id, call_score=call)  # Send Message to say Thank U
 
-            # Increment 1 to the API call number:
+            # Increment update and send api call(1 and 1):
 
-            call = call + 1
+            call = call + call_update_count + call_send_count
 
             time.sleep(sleep)
         except:
