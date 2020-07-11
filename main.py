@@ -95,8 +95,10 @@ def reply(sleep):
         except:
             pass
 
+    reply(sleep=random.randint(60, 120))  # Search for Mentions Again
 
-reply(sleep=1)
 
 make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
         sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
+
+reply(sleep=random.randint(60, 120))
