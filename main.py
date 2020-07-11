@@ -87,6 +87,8 @@ def reply(sleep):
 
             call_send_count = thank_u(results.user.id, call_score=call)  # Send Message to say Thank U
 
+            # TODO Verify if i'm already replied this mention
+
             # Increment update and send api call(1 and 1):
 
             call = call + call_update_count + call_send_count
@@ -101,4 +103,4 @@ def reply(sleep):
 make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
         sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
 
-reply(sleep=random.randint(60, 120))
+# reply(sleep=random.randint(60, 120))
