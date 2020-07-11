@@ -1,4 +1,4 @@
-""" This class is used to make interactions such reply mentions and send messages """
+""" This file is used to make interactions such reply mentions and send messages """
 
 import random
 

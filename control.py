@@ -1,4 +1,4 @@
-""" This class is used to prevent SPAM controlling the number of interactions and API calls """
+""" This file is used to prevent SPAM controlling the number of interactions and API calls """
 
 import time
 

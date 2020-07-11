@@ -1,4 +1,4 @@
-""" This class is used to make retweets about the AI """
+""" This file is used to make retweets about the AI """
 
 from auth import *
 from control import *
