@@ -1,4 +1,4 @@
-""" This file is used for make authentication in the Twitter API """
+""" Make authentication in the Twitter API """
 
 import tweepy
 

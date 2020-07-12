@@ -1,4 +1,4 @@
-""" This file is used to make retweets about the AI """
+""" Make retweets about the Machine Learning, AI and DeepLearning hashtags """
 
 from auth import *
 from control import *
