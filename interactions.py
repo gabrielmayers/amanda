@@ -1,9 +1,13 @@
 """ Make interactions such reply mentions and send messages """
 
 import random
+import time
 
 from auth import *
-from control import *
+
+# Instantiate API:
+
+api = auth_twitter_api()
 
 
 # Stream to search just new mentions
@@ -22,38 +26,17 @@ class StreamListenerMentions(tweepy.StreamListener):
         print("Error detected")
 
 
-# Instantiate API:
-
-api = auth_twitter_api()
-
-
-# Thank for mention:
-
-def thank_u(user, call_score):
-    api.send_direct_message(user, text='Hey, Thank you for mention me! \N{grinning face}')
-
-    call_score = call_score + 1
-
-    return call_score
-
-
-# Like
-
-def favorite(tweet_id):
-    api.create_favorite(tweet_id)
-
-
 # Reply tweets:
 
 def reply(tweet, sleep):
     # Like the Mention:
 
-    favorite(tweet.id, 1)
+    api.create_favorite(tweet.id)
 
     api.update_status(status='\N{yellow heart}', in_reply_to_status_id=tweet.id,
                       auto_populate_reply_metadata=True)
 
-    thank_u(tweet.user.id, 1)
+    api.send_direct_message(tweet.user.id, text='Hey, Thank you for mention me! \N{grinning face}')
 
     time.sleep(sleep)
 
