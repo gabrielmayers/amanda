@@ -47,7 +47,6 @@ python main.py</pre></div>
 <table>  
   <tbody><tr>
 <td>
-  <a target="_blank" rel="noopener noreferrer" href="https://avatars2.githubusercontent.com/u/48564003?s=460&u=0d5be4605ca9d79b7e75b53e9464622de625a71f&v=4"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2Fanalytics-vidhya%2Fdetecting-fake-news-using-machine-learning-95efefab08e4&psig=AOvVaw2qk-U4YQD-sEOaPgoQrenW&ust=1593608523644000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOigjsLMqeoCFQAAAAAdAAAAABAJ" style="max-width:100%;" width="150px" height="150px"></a>
 <pre><code> Gabriel Mayer
 </code></pre>
 <p align="center">
