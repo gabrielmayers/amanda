@@ -8,10 +8,11 @@ from control import *
 
 # Stream to search just new mentions
 
-class MyStreamListener(tweepy.StreamListener):
-    def __init__(self, api):
-        self.api = api
-        self.me = api.me()
+class StreamListenerMentions(tweepy.StreamListener):
+    def __init__(self, api_auth):
+        super().__init__()
+        self.api = api_auth
+        self.me = api_auth.me()
 
     def on_status(self, tweet):
         print(f"{tweet.user.name}:{tweet.text}")
@@ -37,17 +38,16 @@ def thank_u(user, call_score):
 
 
 # Like
-def favorite(tweet_id, call_score):
+
+def favorite(tweet_id):
     api.create_favorite(tweet_id)
-
-    call_score = call_score + 1
-
-    return call_score
 
 
 # Reply tweets:
+
 def reply(tweet, sleep):
     # Like the Mention:
+
     favorite(tweet.id, 1)
 
     api.update_status(status='\N{yellow heart}', in_reply_to_status_id=tweet.id,
@@ -58,8 +58,9 @@ def reply(tweet, sleep):
     time.sleep(sleep)
 
 
-# Search Mentions
+# Search Mentions:
+
 def search_mention():
-    tweets_listener = MyStreamListener(api)
+    tweets_listener = StreamListenerMentions(api_auth=api)
     stream = tweepy.Stream(api.auth, tweets_listener)
     stream.filter(track=['@amandamlbot'])

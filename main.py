@@ -1,11 +1,10 @@
 """ The main file """
 
-from interactions import *
+from retweet import search_tweets
 
 # Make Retweets:
 
-# make_rt(keywords=['#machinelearning', '#deeplearning', '#ai', '#artificialintelligence'],
-#   sleep=random.randint(60, 120))  # Sleep between 1 and 2 minutes 1280222600921321474
+search_tweets(keywords=['#machinelearning', '#deeplearning', '#ai'])
 
 # Reply mentions and send thank u message:
-search_mention()
+# search_mention()

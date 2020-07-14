@@ -1,31 +1,46 @@
 """ Make retweets about the Machine Learning, AI and DeepLearning hashtags """
 
+import random
+
 from auth import *
 from control import *
+from interactions import favorite
+
+
+# Stream to search just new mentions
+
+class StreamListenerTweets(tweepy.StreamListener):
+    def __init__(self, api_auth):
+        super().__init__()
+        self.api = api_auth
+        self.me = api_auth.me()
+
+    def on_status(self, tweet):
+        print(f"{tweet.user.name}:{tweet.text}")
+        make_rt(tweet, sleep=random.randint(60, 120))
+
+    def on_error(self, status):
+        print("Error detected")
+
 
 # Instantiate API:
 
 api = auth_twitter_api()
 
 
-def make_rt(keywords, sleep):
-    search_results = api.search(q=[keywords], count=100)
+# Search Mentions:
 
-    # Start API call counting incrementing 1:
+def search_tweets(keywords):
+    tweets_listener = StreamListenerTweets(api_auth=api)
+    stream = tweepy.Stream(api.auth, tweets_listener)
+    stream.filter(track=keywords)
 
-    call = call_api(1)
 
-    for results in search_results:
+def make_rt(tweet, sleep):
+    # Make Retweet:
 
-        try:
-            api.retweet(id=results.id, count=1)
+    favorite(tweet.id, 1)
 
-            # Increment 1 to the API call number:
+    api.retweet(tweet.id)
 
-            call = call + 1
-
-            time.sleep(sleep)
-        except:
-            pass
-
-    verify_call(call)
+    time.sleep(sleep)
