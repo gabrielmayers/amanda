@@ -5,6 +5,22 @@ import random
 from auth import *
 from control import *
 
+
+# Stream to search just new mentions
+
+class MyStreamListener(tweepy.StreamListener):
+    def __init__(self, api):
+        self.api = api
+        self.me = api.me()
+
+    def on_status(self, tweet):
+        print(f"{tweet.user.name}:{tweet.text}")
+        reply(tweet, sleep=random.randint(60, 120))
+
+    def on_error(self, status):
+        print("Error detected")
+
+
 # Instantiate API:
 
 api = auth_twitter_api()
@@ -20,31 +36,30 @@ def thank_u(user, call_score):
     return call_score
 
 
+# Like
+def favorite(tweet_id, call_score):
+    api.create_favorite(tweet_id)
+
+    call_score = call_score + 1
+
+    return call_score
+
+
 # Reply tweets:
+def reply(tweet, sleep):
+    # Like the Mention:
+    favorite(tweet.id, 1)
 
-def reply(sleep):
-    mentions = api.mentions_timeline()
+    api.update_status(status='\N{yellow heart}', in_reply_to_status_id=tweet.id,
+                      auto_populate_reply_metadata=True)
 
-    # Start API call counting incrementing 1:
+    thank_u(tweet.user.id, 1)
 
-    call = call_api(1)
+    time.sleep(sleep)
 
-    for results in mentions:
 
-        try:
-            call_update_count = api.update_status(status='\N{yellow heart}', in_reply_to_status_id=results.id,
-                                                  auto_populate_reply_metadata=True)  # implement don't repeat comments
-
-            call_send_count = thank_u(results.user.id, call_score=call)  # Send Message to say Thank U
-
-            # TODO Verify if i'm already replied this mention
-
-            # Increment update and send api call(1 and 1):
-
-            call = call + call_update_count + call_send_count
-
-            time.sleep(sleep)
-        except:
-            pass
-
-    reply(sleep=random.randint(60, 120))  # Search for Mentions Again
+# Search Mentions
+def search_mention():
+    tweets_listener = MyStreamListener(api)
+    stream = tweepy.Stream(api.auth, tweets_listener)
+    stream.filter(track=['@amandamlbot'])
