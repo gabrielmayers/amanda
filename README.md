@@ -30,8 +30,7 @@
  
 <div class="highlight highlight-source-shell"><pre>git clone https://github.com/gabrielmayers/amanda.git
 <span class="pl-c1">cd</span> amanda
-pip install -r requirements.txt
-python main.py</pre></div>
+pip install -r requirements.txt</pre></div>
 
 
  <li> Put your API Key into <a href="https://github.com/gabrielmayers/amanda/blob/master/auth.py"> auth file </a> </li>
