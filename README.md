@@ -34,7 +34,7 @@ pip install -r requirements.txt</pre></div>
 
 
  <li> Put your API Key into <a href="https://github.com/gabrielmayers/amanda/blob/master/auth.py"> auth file </a> </li>
- <li> Run it by using <pre> python main.py </pre> </li>
+ <li> Run it by using: <pre> python main.py </pre> </li>
 </ul>
 
 
