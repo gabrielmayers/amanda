@@ -19,6 +19,7 @@ class StreamListenerTweets(tweepy.StreamListener):
         self.me = api_auth.me()
 
     def on_status(self, tweet):
+        print('Tweet Found! ')
         print(f"{tweet.user.name}:{tweet.text}")
         make_rt(tweet, sleep=random.randint(60, 120))
 

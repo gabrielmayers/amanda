@@ -19,6 +19,7 @@ class StreamListenerMentions(tweepy.StreamListener):
         self.me = api_auth.me()
 
     def on_status(self, tweet):
+        print('Mention Found! ')
         print(f"{tweet.user.name}:{tweet.text}")
         reply(tweet, sleep=random.randint(60, 120))
 
@@ -43,7 +44,9 @@ def reply(tweet, sleep):
 
 # Search Mentions:
 
-def search_mention():
+def search_mention(username):
     tweets_listener = StreamListenerMentions(api_auth=api)
     stream = tweepy.Stream(api.auth, tweets_listener)
-    stream.filter(track=['@amandamlbot'])
+    mention = stream.filter(track=username)
+
+    print(mention)
