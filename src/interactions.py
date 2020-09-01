@@ -4,6 +4,7 @@ import random
 import time
 
 from auth import *
+from retweet import search_tweets
 
 # Instantiate API:
 
@@ -22,6 +23,7 @@ class StreamListenerMentions(tweepy.StreamListener):
         print('Mention Found! ')
         print(f"{tweet.user.name}:{tweet.text}")
         reply(tweet, sleep=random.randint(60, 120))
+        search_tweets(keywords=['#machinelearning', '#deeplearning', '#ai'])
 
     def on_error(self, status):
         print("Error detected")

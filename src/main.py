@@ -5,8 +5,8 @@ from retweet import *
 
 # Make Retweets:
 
-search_tweets(keywords=['#machinelearning', '#deeplearning', '#ai'])
+# search_tweets(keywords=['#machinelearning', '#deeplearning', '#ai'])
 
 # Reply mentions and send thank u message:
 
-# search_mention(username=['@AmieAndYou'])
+search_mention(username=['@AmieAndYou'])
