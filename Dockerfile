@@ -5,5 +5,5 @@ COPY bots/favretweet.py /src/
 COPY requirements.txt /tmp
 RUN pip3 install -r /tmp/requirements.txt
 
-WORKDIR /bots
+WORKDIR /src
 CMD ["python3", "main.py"]
