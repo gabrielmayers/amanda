@@ -9,4 +9,9 @@ from retweet import *
 
 # Reply mentions and send thank u message:
 
-search_mention(username=['@AmieAndYou'])
+since_id = 1
+
+while True:
+    since_id = check_mentions(["@AmieAndYou"], since_id)
+    print("Waiting...")
+    time.sleep(60)
