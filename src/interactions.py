@@ -53,22 +53,3 @@ def search_mention(username):
 
     print(mention)
 
-def check_mentions(keywords, since_id):
-    print("Retrieving mentions")
-    new_since_id = since_id
-    for tweet in tweepy.Cursor(api.mentions_timeline,
-        since_id=since_id).items():
-        new_since_id = max(tweet.id, new_since_id)
-        if tweet.in_reply_to_status_id is not None:
-            continue
-        if any(keyword in tweet.text.lower() for keyword in keywords):
-            print("Answering to {tweet.user.name}")
-
-            api.create_favorite(tweet.id)
-
-            api.update_status(status='\N{yellow heart}', in_reply_to_status_id=tweet.id,
-                      auto_populate_reply_metadata=True)
-
-            api.send_direct_message(tweet.user.id, text='Hey, Thank you for mention me! \N{grinning face}')
-
-    return new_since_id

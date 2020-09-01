@@ -23,7 +23,6 @@ class StreamListenerTweets(tweepy.StreamListener):
         print('Tweet Found! ')
         print(f"{tweet.user.name}:{tweet.text}")
         make_rt(tweet, sleep=random.randint(60, 120))
-        
 
     def on_error(self, status):
         print("Error detected")
