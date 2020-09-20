@@ -22,7 +22,11 @@ class StreamListenerTweets(tweepy.StreamListener):
     def on_status(self, tweet):
         print('Tweet Found! ')
         print(f"{tweet.user.name}:{tweet.text}")
-        make_rt(tweet, sleep=random.randint(60, 120))
+
+        try:
+          make_rt(tweet, sleep=random.randint(60, 120))
+        except:
+            pass
 
     def on_error(self, status):
         print("Error detected")
@@ -39,7 +43,10 @@ def search_tweets(keywords):
 def make_rt(tweet, sleep):
     # Make Retweet:
 
-    api.create_favorite(tweet.id)
+    try:
+        api.create_favorite(tweet.id)
+    except:
+        pass
 
     api.retweet(tweet.id)
 
