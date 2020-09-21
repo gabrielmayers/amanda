@@ -24,7 +24,7 @@ class StreamListenerTweets(tweepy.StreamListener):
         print(f"{tweet.user.name}:{tweet.text}")
 
         try:
-          make_rt(tweet, sleep=random.randint(60, 120))
+          make_rt(tweet, sleep=random.randint(10, 60))
         except:
             pass
 
