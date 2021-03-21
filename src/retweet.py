@@ -25,6 +25,7 @@ class StreamListenerTweets(tweepy.StreamListener):
 
         try:
           make_rt(tweet, sleep=random.randint(10, 60))
+          print("Twitted!")
         except:
             pass
 
