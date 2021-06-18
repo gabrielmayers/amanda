@@ -1,4 +1,4 @@
-""" Make retweets about the Machine Learning, AI and DeepLearning hashtags """
+""" Make retweets about the Machine Learning, AI and Deep Learning hashtags """
 
 import random
 import time
@@ -20,8 +20,8 @@ class StreamListenerTweets(tweepy.StreamListener):
         self.me = api_auth.me()
 
     def on_status(self, tweet):
-        print('Tweet Found! ')
-        print(f"{tweet.user.name}:{tweet.text}")
+        print('Tweet Found!')
+        print(f"{tweet.user.name}")
 
         try:
           make_rt(tweet, sleep=random.randint(10, 60))
