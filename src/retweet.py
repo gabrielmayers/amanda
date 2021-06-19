@@ -24,9 +24,13 @@ class StreamListenerTweets(tweepy.StreamListener):
         print(f"{tweet.user.name} {tweet.text}")
 
         try:
-          make_rt(tweet, sleep=random.randint(10, 60))
+          make_rt(tweet)
           print("Twitted!")
+          print("\n ==================================================== \n")
+          time.sleep(random.randint(5, 30))
         except:
+            print("An Error ocurred when tried to make retweet!")
+            print(f"{tweet.user.name} {tweet.text}")
             pass
 
     def on_error(self, status):
@@ -41,7 +45,7 @@ def search_tweets(keywords):
     stream.filter(track=keywords)
 
 
-def make_rt(tweet, sleep):
+def make_rt(tweet):
     # Make Retweet:
 
     try:
@@ -50,5 +54,3 @@ def make_rt(tweet, sleep):
         pass
 
     api.retweet(tweet.id)
-
-    time.sleep(sleep)
