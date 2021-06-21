@@ -14,6 +14,9 @@ api = auth_twitter_api()
 # Stream to search just new mentions
 
 class StreamListenerTweets(tweepy.StreamListener):
+
+    post_counter = 0
+
     def __init__(self, api_auth):
         super().__init__()
         self.api = api_auth
@@ -26,6 +29,7 @@ class StreamListenerTweets(tweepy.StreamListener):
         try:
           make_rt(tweet)
           print("Twitted!")
+         
           print("\n ==================================================== \n")
           time.sleep(random.randint(5, 30))
         except:
