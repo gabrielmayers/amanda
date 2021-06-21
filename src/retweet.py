@@ -30,8 +30,9 @@ class StreamListenerTweets(tweepy.StreamListener):
           make_rt(tweet)
           print("Twitted!")
          
-          print("\n ==================================================== \n")
-          time.sleep(random.randint(5, 30))
+          print("\n ==================================================== \n Sleeping... \n")
+
+          time.sleep(random.randint(5, 60))
         except:
             print("An Error ocurred when tried to make retweet!")
             print(f"{tweet.user.name} {tweet.text}")
